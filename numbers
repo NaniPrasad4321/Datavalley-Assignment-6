@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class NumberAnalyzer {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int largest = Integer.MIN_VALUE;
+        int smallest = Integer.MAX_VALUE;
+        int sum = 0;
+        int count = 0;
+
+        boolean continueInput = true;
+
+        // Continue taking input until the user wants to stop
+        while (continueInput) {
+            System.out.print("Enter a number (enter '0' to stop): ");
+            int number = scanner.nextInt();
+
+            // Check if the input number is zero
+            if (number == 0) {
+                continueInput = false;
+            } else {
+                // Update largest and smallest numbers
+                largest = Math.max(largest, number);
+                smallest = Math.min(smallest, number);
+
+                // Update sum and count for calculating average
+                sum += number;
+                count++;
+            }
+        }
+
+        // Calculate the average
+        double average = (double) sum / count;
+
+        // Display results
+        if (count >0) {
+            System.out.println("Largest number: " + largest);
+            System.out.println("Smallest number: " + smallest);
+            System.out.println("Average of all numbers: " + average);
+        } else {
+            System.out.println("No numbers entered.");
+        }
+
+        scanner.close();
+    }
+}
